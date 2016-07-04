@@ -41,7 +41,8 @@ public class AccidentRs {
     }
 
     private void simulateDataStorage() {
-        DataAccess dal = new DataAccess();
+        
+        DataAccess _dal = new DataAccess();
 
         Accident a = new Accident();
         a.setName("A45-78");
@@ -50,11 +51,11 @@ public class AccidentRs {
         Location loc = new Location();
         loc.setLatitude("454.485454");
         loc.setLongitude("54.445435");
-        dal.createLocation(loc);
+        _dal.createLocation(loc);
 
         a.setLocation(loc);
 
-        dal.createAccident(a);
+        _dal.createAccident(a);
 
     }
 }
