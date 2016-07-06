@@ -33,5 +33,7 @@
    <mapping class="com.org.rook.model.SpeedtrapType"/>
    <mapping class="com.org.rook.model.Traffic"/>
    <mapping class="com.org.rook.model.Hijacking"/>
+   <mapping class="com.org.rook.model.Direction"/>
+   <mapping class="com.org.rook.model.TaxiRank"/>
 </session-factory>
 </hibernate-configuration>

@@ -35,13 +35,6 @@ public class SpeedtrapType implements Serializable {
     }
 
     /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
      * @return the name
      */
     public String getName() {

@@ -7,6 +7,7 @@ package com.org.rook.dal;
 
 import com.org.rook.model.Accident;
 import com.org.rook.model.Location;
+import com.org.rook.model.PolygonType;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,6 +27,15 @@ public class DataAccess {
 				.applySettings(configuration.getProperties());
 		SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
 		return sessionFactory;
+    }
+    
+    public void createObject(Object obj){
+        Session session = getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(obj);
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("Successfully created " + obj.toString());
     }
 
     public Integer createAccident(Accident a) {
@@ -56,6 +66,16 @@ public class DataAccess {
         session.close();
         System.out.println("Successfully created " + loc.toString());
         return loc.getId();
+    }
+    
+    public Integer createPolygonType(PolygonType pol) {
+        Session session = getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(pol);
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("Successfully created " + pol.toString());
+        return pol.getId();
     }
 
 }

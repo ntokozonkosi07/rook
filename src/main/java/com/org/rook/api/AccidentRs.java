@@ -33,6 +33,7 @@ public class AccidentRs {
             responseContainer = "List"
     )
     public ArrayList<Accident> readAccidents() {
+        
         return (ArrayList<Accident>) new DataAccess().getAccidents();
     }
 
@@ -47,15 +48,21 @@ public class AccidentRs {
         Accident a = new Accident();
         a.setName("A45-78");
         a.setDescription("Colision");
+        
+        PolygonType pt = new PolygonType();
+        pt.setName("Point");
+        _dal.createObject(pt);
+        
+        a.setPolygonType(pt);
 
         Location loc = new Location();
         loc.setLatitude("454.485454");
         loc.setLongitude("54.445435");
-        _dal.createLocation(loc);
+        _dal.createObject(loc);
 
         a.setLocation(loc);
 
-        _dal.createAccident(a);
+        _dal.createObject(a);
 
     }
 }

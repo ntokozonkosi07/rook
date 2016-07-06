@@ -21,6 +21,7 @@ public class Speedtrap extends Incident{
     @ApiModelProperty(value = "Speedtrap location", required = true)
     private Location location;
     @ApiModelProperty(value = "SpeedtrapType allocation", required = true)
+    @OneToOne
     private SpeedtrapType speedTrapType;
 
     /**
