@@ -26,6 +26,7 @@ public class JaxRsActivator extends Application {
         resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
         
         resources.add(com.org.rook.api.AccidentRs.class);
+        resources.add(com.org.rook.api.HijackingRs.class);
         resources.add(com.org.rook.config.CORSFilter.class);
 
         return resources;
