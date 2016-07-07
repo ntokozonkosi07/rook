@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author ntokozo-nkosi
  */
-@Path("/accidents")
+@Path("/accident")
 @Api(value = "/accidents", description = "Manage accidents")
 public class AccidentRs {
 
@@ -39,30 +39,5 @@ public class AccidentRs {
 
     public Accident createAccident() {
         return null;
-    }
-
-    private void simulateDataStorage() {
-        
-        DataAccess _dal = new DataAccess();
-
-        Accident a = new Accident();
-        a.setName("A45-78");
-        a.setDescription("Colision");
-        
-        PolygonType pt = new PolygonType();
-        pt.setName("Point");
-        _dal.createObject(pt);
-        
-        a.setPolygonType(pt);
-
-        Location loc = new Location();
-        loc.setLatitude("454.485454");
-        loc.setLongitude("54.445435");
-        _dal.createObject(loc);
-
-        a.setLocation(loc);
-
-        _dal.createObject(a);
-
     }
 }
