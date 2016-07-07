@@ -25,7 +25,7 @@ import org.hibernate.Session;
 public class HijackingRs {
 
     @GET
-    @Path("/hotspots")
+    @Path("/hotspot")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(
             value = "List all accidents",
