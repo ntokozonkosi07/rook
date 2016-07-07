@@ -60,6 +60,19 @@ public class HijackingRs {
         });
     }
 
+    @POST
+    @Path(value = "/hotspot/create")
+    @Consumes(value = MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Create Hotspot", notes = "Create new hijacking hospot")
+    public void createHijackingHotspot(@Suspended final AsyncResponse asyncResponse, @ApiParam(value = "hotspot", required = true) final Hijacking hotspot) {
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                doCreateHijackingHotspot(hotspot);
+                asyncResponse.resume(javax.ws.rs.core.Response.ok().build());
+            }
+        });
+    }
     
     private List<Hijacking> doReadHijackingHotspots() {
         Session session = getSessionFactory().openSession();
@@ -76,21 +89,7 @@ public class HijackingRs {
         hijackingHotspot = (Hijacking) session.get(Hijacking.class, hotspotId);
         session.close();
         return hijackingHotspot;
-    }
-
-    @POST
-    @Path(value = "/hotspot/create")
-    @Consumes(value = MediaType.APPLICATION_JSON)
-    @ApiOperation(value = "Create Hotspot", notes = "Create new hijacking hospot")
-    public void createHijackingHotspot(@Suspended final AsyncResponse asyncResponse, @ApiParam(value = "hotspot", required = true) final Hijacking hotspot) {
-        executorService.submit(new Runnable() {
-            @Override
-            public void run() {
-                doCreateHijackingHotspot(hotspot);
-                asyncResponse.resume(javax.ws.rs.core.Response.ok().build());
-            }
-        });
-    }
+    }  
 
     private void doCreateHijackingHotspot(@ApiParam(value = "hotspot", required = true) Hijacking hotspot) {
         Session session = getSessionFactory().openSession();
